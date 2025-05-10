@@ -45,6 +45,7 @@ app.post("/delete", async function (req, res) {
     }
 });
 
-app.listen("3000",function(){
-    console.log("server is running");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
 });

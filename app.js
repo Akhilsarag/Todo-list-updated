@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended:true}));
 
 const mongoose = require("mongoose");
 const { name } = require("ejs");
-mongoose.connect("mongodb://localhost:27017/todo")
+mongoose.connect("mongodb+srv://user1:Akhil1234@@cluster0.fydytwh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 const trySchema = new mongoose.Schema({
     name:String
 });

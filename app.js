@@ -9,7 +9,7 @@ app.use(express.urlencoded({extended:true}));
 
 const mongoose = require("mongoose");
 const { name } = require("ejs");
-mongoose.connect("mongodb+srv://user1:Akhil1234@@cluster0.fydytwh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb+srv://user1:Akhil1234%40cluster0.fydytwh.mongodb.net/todolistDB?retryWrites=true&w=majority&appName=Cluster0")
 const trySchema = new mongoose.Schema({
     name:String
 });
@@ -24,14 +24,17 @@ app.get("/", async function(req, res) {
         res.send("Error fetching items");
     }
 });
-app.post("/",function(req,res){
-    const ItemName = req.body.ele1;
-    const newItem= new item({
-        name:ItemName
-    });
-    newItem.save();
+app.post("/", async function(req, res){
+    const ItemName = req.body.ele1.trim(); // remove white spaces
+
+    if (ItemName) {
+        const newItem = new item({ name: ItemName });
+        await newItem.save();
+    }
+
     res.redirect("/");
-})
+});
+
 app.post("/delete", async function (req, res) {
     const checked = req.body.checkbox1;
 

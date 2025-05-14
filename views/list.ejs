@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo list</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Todo List</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <div class="box">
-        <h1>Todo list</h1>
-    </div>
-    <div class="box">
-        <% ejes.forEach(function(items) { %>
-            <form action="/delete" method="post">
-              <div class="item">
-                <label class="task-label">
-                  <input 
-                    type="checkbox" 
-                    class="task-checkbox" 
-                    name="checkbox1" 
-                    value="<%= items._id %>" 
-                    onchange="this.form.submit()">
-                  <span class="task-text"><%= items.name %></span>
-                </label>
-              </div>
-            </form>
-          <% }) %>
-          
+  <div class="box">
+    <h1>Todo List</h1>
+  </div>
 
-                <form action="/" method="post">
-                    <input type="text" name="ele1" placeholder="Enter the task">
-                    <button type="submit">+</button>
-                </form>
-    </div>
+  <div class="box">
+    <% for (let i = 0; i < ejes.length; i++) { %>
+      <div class="item">
+        <form action="/delete" method="post" style="display: inline;">
+          <input type="hidden" name="deleteId" value="<%= ejes[i].id %>">
+          <button type="submit" class="delete-button">🗑️</button>
+        </form>
+
+        <form action="/update" method="post" class="update-form">
+          <input type="hidden" name="updateId" value="<%= ejes[i].id %>">
+          <input type="text" name="updatedText" value="<%= ejes[i].name %>" class="task-input">
+          <button type="submit" class="update-button">✏️</button>
+        </form>
+
+        <span class="priority <%= ejes[i].priority %>"><%= ejes[i].priority %></span>
+      </div>
+    <% } %>
+
+    <form action="/" method="post">
+      <input type="text" name="ele1" placeholder="Enter the task" required>
+      
+      <select name="priority" required>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    
+      <button type="submit">Add Task</button>
+    </form>    
+  </div>
 </body>
-
 </html>

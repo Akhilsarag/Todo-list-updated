@@ -1,124 +1,194 @@
 /* Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: #f0f2f5;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Main container */
-  .box {
-    background-color: white;
-    padding: 30px;
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #007bff;
-  }
-  
-  /* List styles */
-  ul {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 20px;
-  }
-  
-  li {
-    background-color: #f8f9fa;
-    margin: 8px 0;
-    padding: 12px 20px;
-    border-radius: 8px;
-    text-align: left;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-  }
-  
-  li:hover {
-    background-color: #e9ecef;
-  }
-  
-  /* Form styling */
-  form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  input[type="text"] {
-    flex: 1;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-  }
-  
-  button {
-    padding: 12px 18px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Mobile responsive */
-  @media only screen and (max-width: 480px) {
-    .box {
-      padding: 20px;
-    }
-  
-    form {
-      flex-direction: column;
-      gap: 10px;
-    }
-  
-    input[type="text"],
-    button {
-      width: 100%;
-    }
-  }
-  /* Style checkbox + task in one line */
-.item {
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  text-align: left;
-  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Wrap input + task in a label */
-.task-label {
+body {
+  background: #f0f2f5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  padding: 40px 20px;
   display: flex;
+  justify-content: center;
+}
+
+/* Main container */
+.box {
+  background-color: white;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #007bff;
+}
+
+/* List styles */
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+li {
+  background-color: #f8f9fa;
+  margin: 8px 0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-align: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+li:hover {
+  background-color: #e9ecef;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
-  cursor: pointer;
 }
 
-/* Task text */
-.task-text {
+input[type="text"] {
+  flex: 1;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Task Item Styles */
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.item .task-text {
   font-size: 1rem;
   transition: all 0.2s ease;
+  flex: 1;
+}
+
+.item .task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.item .priority {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.priority.low {
+  color: green;
+}
+
+.priority.medium {
+  color: orange;
+}
+
+.priority.high {
+  color: red;
+}
+
+/* Delete Button Styling */
+.delete-button {
+  border: none;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.delete-button:hover {
+  color: darkred;
+}
+
+/* Mobile responsive */
+@media only screen and (max-width: 480px) {
+  .box {
+    padding: 20px;
+  }
+
+  form {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  input[type="text"],
+  button {
+    width: 100%;
+  }
+}
+
+/* Additional Style Adjustments */
+.edit-form input[type="text"] {
+  width: 50%;
+  margin-right: 10px;
+}
+
+.edit-form select {
+  margin-right: 10px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.priority.low {
+  color: green;
+}
+
+.priority.medium {
+  color: orange;
+}
+
+.priority.high {
+  color: red;
 }

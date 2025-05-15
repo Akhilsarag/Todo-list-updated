@@ -8,37 +8,37 @@
 <body>
   <div class="box">
     <h1>Todo List</h1>
-  </div>
 
-  <div class="box">
-    <% for (let i = 0; i < ejes.length; i++) { %>
-      <div class="item">
-        <form action="/delete" method="post" style="display: inline;">
-          <input type="hidden" name="deleteId" value="<%= ejes[i].id %>">
-          <button type="submit" class="delete-button">🗑️</button>
-        </form>
-
-        <form action="/update" method="post" class="update-form">
-          <input type="hidden" name="updateId" value="<%= ejes[i].id %>">
-          <input type="text" name="updatedText" value="<%= ejes[i].name %>" class="task-input">
-          <button type="submit" class="update-button">✏️</button>
-        </form>
-
-        <span class="priority <%= ejes[i].priority %>"><%= ejes[i].priority %></span>
-      </div>
-    <% } %>
-
-    <form action="/" method="post">
-      <input type="text" name="ele1" placeholder="Enter the task" required>
-      
+    <!-- Add New Task -->
+    <form action="/" method="POST">
+      <input type="text" name="ele1" placeholder="Enter a task" required />
       <select name="priority" required>
+        <option value="">Priority</option>
         <option value="High">High</option>
         <option value="Medium">Medium</option>
         <option value="Low">Low</option>
       </select>
-    
-      <button type="submit">Add Task</button>
-    </form>    
+      <button type="submit">Add</button>
+    </form>
+
+    <!-- Task List -->
+    <ul>
+      <% ejes.forEach(task => { %>
+        <li class="item">
+          <!-- Delete form -->
+          <form action="/delete/<%= task._id %>?_method=DELETE" method="POST" style="margin-right: 10px;">
+            <button type="submit" title="Delete">🗑️</button>
+          </form>
+
+          <!-- Edit form -->
+          <form action="/update/<%= task._id %>?_method=PUT" method="POST" class="edit-form">
+            <input type="text" name="updatedText" value="<%= task.name %>" required />
+            <span class="priority <%= task.priority.toLowerCase() %>"><%= task.priority %></span>
+            <button type="submit" title="Update">✏️</button>
+          </form>
+        </li>
+      <% }) %>
+    </ul>
   </div>
 </body>
 </html>

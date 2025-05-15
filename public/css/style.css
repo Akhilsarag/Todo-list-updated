@@ -5,10 +5,10 @@
   box-sizing: border-box;
 }
 
+/* Base styles */
 body {
   background: #f0f2f5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
   padding: 40px 20px;
   display: flex;
   justify-content: center;
@@ -26,51 +26,65 @@ body {
   text-align: center;
 }
 
+/* Heading */
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #007bff;
 }
 
-/* List styles */
+/* Task list */
 ul {
   list-style: none;
   padding-left: 0;
   margin-bottom: 20px;
 }
 
-li {
-  background-color: #f8f9fa;
-  margin: 8px 0;
-  padding: 12px 20px;
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 10px;
   border-radius: 8px;
-  text-align: left;
+  margin: 10px 0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
 }
 
-li:hover {
-  background-color: #e9ecef;
+/* Priority Colors */
+.priority.low {
+  color: green;
 }
 
-/* Form styling */
+.priority.medium {
+  color: orange;
+  font-weight: bold;
+}
+
+.priority.high {
+  color: red;
+  font-weight: bold;
+}
+
+/* Form */
 form {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 10px;
+  margin: 10px 0;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-input[type="text"] {
-  flex: 1;
-  padding: 12px 15px;
+input[type="text"],
+select {
+  padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 1rem;
 }
 
 button {
-  padding: 12px 18px;
+  padding: 10px 16px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -84,111 +98,53 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Task Item Styles */
-.item {
+/* Edit form */
+.edit-form {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  background: #f8f9fa;
-  padding: 10px;
-  border-radius: 8px;
-  margin: 10px 0;
-}
-
-.item .task-text {
-  font-size: 1rem;
-  transition: all 0.2s ease;
-  flex: 1;
-}
-
-.item .task-actions {
-  display: flex;
   gap: 10px;
 }
 
-.item .priority {
-  font-size: 1rem;
-  font-weight: bold;
+.edit-form input[type="text"] {
+  width: 50%;
 }
 
-.priority.low {
-  color: green;
+.edit-form button {
+  background-color: #28a745;
 }
 
-.priority.medium {
-  color: orange;
+.edit-form button:hover {
+  background-color: #218838;
 }
 
-.priority.high {
-  color: red;
+/* Delete button */
+.delete-form button {
+  background-color: #dc3545;
 }
 
-/* Delete Button Styling */
-.delete-button {
-  border: none;
-  background-color: transparent;
-  color: red;
-  cursor: pointer;
-  font-size: 1.5rem;
+.delete-form button:hover {
+  background-color: #c82333;
 }
 
-.delete-button:hover {
-  color: darkred;
-}
-
-/* Mobile responsive */
-@media only screen and (max-width: 480px) {
+/* Responsive */
+@media (max-width: 480px) {
   .box {
     padding: 20px;
   }
 
   form {
     flex-direction: column;
-    gap: 10px;
   }
 
   input[type="text"],
+  select,
   button {
     width: 100%;
   }
-}
 
-/* Additional Style Adjustments */
-.edit-form input[type="text"] {
-  width: 50%;
-  margin-right: 10px;
-}
-
-.edit-form select {
-  margin-right: 10px;
-}
-
-form {
-  display: flex;
-  gap: 10px;
-  margin: 10px 0;
-}
-
-button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-.priority.low {
-  color: green;
-}
-
-.priority.medium {
-  color: orange;
-}
-
-.priority.high {
-  color: red;
+  .edit-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
